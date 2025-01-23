@@ -2,12 +2,12 @@ mod snapchat_payload;
 
 use std::collections::HashMap;
 
-use crate::exports::edgee::protocols::provider::{
+use crate::exports::edgee::protocols::data_collection::{
     Data, Dict, EdgeeRequest, Event, Guest, HttpMethod,
 };
 use snapchat_payload::{parse_value, SnapchatEvent, SnapchatPayload};
 
-wit_bindgen::generate!({world: "data-collection", path: "wit", with: { "edgee:protocols/provider": generate }});
+wit_bindgen::generate!({world: "edgee", path: "wit", with: { "edgee:protocols/data-collection": generate }});
 
 export!(SnapchatComponent);
 
