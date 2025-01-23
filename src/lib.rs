@@ -7,7 +7,7 @@ use crate::exports::edgee::protocols::data_collection::{
 };
 use snapchat_payload::{parse_value, SnapchatEvent, SnapchatPayload};
 
-wit_bindgen::generate!({world: "edgee", path: "wit", with: { "edgee:protocols/data-collection": generate }});
+wit_bindgen::generate!({world: "data-collection", path: "wit", generate_all});
 
 export!(SnapchatComponent);
 
