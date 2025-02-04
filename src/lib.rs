@@ -14,9 +14,9 @@ export!(SnapchatComponent);
 struct SnapchatComponent;
 
 impl Guest for SnapchatComponent {
-    fn page(edgee_event: Event, cred_map: Dict) -> Result<EdgeeRequest, String> {
+    fn page(edgee_event: Event, settings: Dict) -> Result<EdgeeRequest, String> {
         if let Data::Page(ref data) = edgee_event.data {
-            let mut snapchat_payload = SnapchatPayload::new(cred_map).map_err(|e| e.to_string())?;
+            let mut snapchat_payload = SnapchatPayload::new(settings).map_err(|e| e.to_string())?;
 
             let mut event =
                 SnapchatEvent::new(&edgee_event, "PAGE_VIEW").map_err(|e| e.to_string())?;
@@ -48,13 +48,13 @@ impl Guest for SnapchatComponent {
         }
     }
 
-    fn track(edgee_event: Event, cred_map: Dict) -> Result<EdgeeRequest, String> {
+    fn track(edgee_event: Event, settings: Dict) -> Result<EdgeeRequest, String> {
         if let Data::Track(ref data) = edgee_event.data {
             if data.name.is_empty() {
                 return Err("Track name is not set".to_string());
             }
 
-            let mut snapchat_payload = SnapchatPayload::new(cred_map).map_err(|e| e.to_string())?;
+            let mut snapchat_payload = SnapchatPayload::new(settings).map_err(|e| e.to_string())?;
             let mut event =
                 SnapchatEvent::new(&edgee_event, data.name.as_str()).map_err(|e| e.to_string())?;
 
@@ -72,7 +72,7 @@ impl Guest for SnapchatComponent {
         }
     }
 
-    fn user(_edgee_event: Event, _cred_map: Dict) -> Result<EdgeeRequest, String> {
+    fn user(_edgee_event: Event, _settings: Dict) -> Result<EdgeeRequest, String> {
         Err("User event not implemented for this component".to_string())
     }
 }
@@ -98,6 +98,7 @@ fn build_edgee_request(snapchat_payload: SnapchatPayload) -> EdgeeRequest {
         method: HttpMethod::Post,
         url,
         headers,
+        forward_client_headers: true,
         body: serde_json::to_string(&snapchat_payload).unwrap(),
     }
 }

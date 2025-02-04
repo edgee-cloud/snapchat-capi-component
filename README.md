@@ -21,12 +21,12 @@ This component implements the data collection protocol between [Edgee](https://w
 3. Add the following configuration to your `edgee.toml`:
 
 ```toml
-[[destinations.data_collection]]
-name = "snapchat_capi"
-component = "/var/edgee/components/snapchat_capi.wasm"
-credentials.snapchat_access_token = "YOUR_ACCESS_TOKEN"
-credentials.snapchat_pixel_id = "YOUR_PIXEL_ID"
-credentials.snapchat_test_event_code = "TEST_EVENT_CODE" # Optional
+[[components.data_collection]]
+id = "snapchat_capi"
+file = "/var/edgee/components/snapchat_capi.wasm"
+settings.snapchat_access_token = "YOUR_ACCESS_TOKEN"
+settings.snapchat_pixel_id = "YOUR_PIXEL_ID"
+settings.snapchat_test_event_code = "TEST_EVENT_CODE" # Optional
 ```
 
 ## Event Handling
@@ -64,23 +64,23 @@ edgee.user({
 
 ### Basic Configuration
 ```toml
-[[destinations.data_collection]]
-name = "snapchat_capi"
-component = "/var/edgee/components/snapchat_capi.wasm"
-credentials.snapchat_access_token = "YOUR_ACCESS_TOKEN"
-credentials.snapchat_pixel_id = "YOUR_PIXEL_ID"
-credentials.snapchat_test_event_code = "TEST_EVENT_CODE" # Optional
+[[components.data_collection]]
+id = "snapchat_capi"
+file = "/var/edgee/components/snapchat_capi.wasm"
+settings.snapchat_access_token = "YOUR_ACCESS_TOKEN"
+settings.snapchat_pixel_id = "YOUR_PIXEL_ID"
+settings.snapchat_test_event_code = "TEST_EVENT_CODE" # Optional
 
 # Optional configurations
-config.default_consent = "pending" # Set default consent status
+settings.edgee_default_consent = "pending" # Set default consent status
 ```
 
 ### Event Controls
 Control which events are forwarded to Snapchat CAPI:
 ```toml
-config.page_event_enabled = true   # Enable/disable page view tracking
-config.track_event_enabled = true  # Enable/disable custom event tracking
-config.user_event_enabled = false   # User event is not provided by the snapchat CAPI
+settings.edgee_page_event_enabled = true   # Enable/disable page view tracking
+settings.edgee_track_event_enabled = true  # Enable/disable custom event tracking
+settings.edgee_user_event_enabled = false   # User event is not provided by the snapchat CAPI
 ```
 
 ### Consent Management
