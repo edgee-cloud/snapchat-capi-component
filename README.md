@@ -12,6 +12,10 @@
 
 <h1 align="center">Snapchat CAPI Component for Edgee</h1>
 
+[![Coverage Status](https://coveralls.io/repos/github/edgee-cloud/snapchat-capi-component/badge.svg)](https://coveralls.io/github/edgee-cloud/snapchat-capi-component)
+[![GitHub issues](https://img.shields.io/github/issues/edgee-cloud/snapchat-capi-component.svg)](https://github.com/edgee-cloud/snapchat-capi-component/issues)
+[![Edgee Component Registry](https://img.shields.io/badge/Edgee_Component_Registry-Public-green.svg)](https://www.edgee.cloud/edgee/snapchat-capi)
+
 This component implements the data collection protocol between [Edgee](https://www.edgee.cloud) and [Snapchat CAPI](https://developers.snap.com/api/marketing-api/Conversions-API).
 
 ## Quick Start
