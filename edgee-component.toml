@@ -1,0 +1,36 @@
+manifest-version = 1
+
+[component]
+name = "Snapchat Capi"
+version = "0.7.0"
+category = "data-collection"
+subcategory = "analytics"
+description = """
+Snap’s Conversions API (CAPI) is a structured, privacy-centric interface that allows you to directly pass web, app, and offline events to Snap via a Server-to-Server (S2S) integration.
+This helps our system to optimize your ad campaigns, improve your targeting and measure the conversions that resulted from your Snapchat campaigns.
+"""
+documentation = "https://www.edgee.cloud/docs/components/data-collection/snapchat-capi"
+repository = "https://github.com/edgee-cloud/snapchat-capi-component"
+wit-world-version = "0.4.0"
+
+[component.build]
+command = "cargo build --target wasm32-wasip2 --release && cp ./target/wasm32-wasip2/release/snapchat_capi_component.wasm snapchat_capi.wasm"
+output_path = "snapchat_capi.wasm"
+
+[component.settings.snapchat_pixel_id]
+title = "Snapchat Pixel ID"
+type = "string"
+required = true
+description = "The pixel ID for your Snapchat account"
+
+[component.settings.snapchat_access_token]
+title = "Snapchat Access Token"
+type = "string"
+required = true
+description = "The access token for your Snapchat account"
+
+[component.settings.snapchat_test_event_code]
+title = "Snapchat Test Event Code (optional)"
+type = "string"
+required = false
+description = "The test event code for your Snapchat account"
