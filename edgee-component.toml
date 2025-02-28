@@ -4,7 +4,7 @@ manifest-version = 1
 name = "Snapchat Capi"
 version = "0.8.0"
 category = "data-collection"
-subcategory = "analytics"
+subcategory = "conversion-api"
 description = """
 Snap’s Conversions API (CAPI) is a structured, privacy-centric interface that allows you to directly pass web, app, and offline events to Snap via a Server-to-Server (S2S) integration.
 This helps our system to optimize your ad campaigns, improve your targeting and measure the conversions that resulted from your Snapchat campaigns.
